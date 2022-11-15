@@ -5,7 +5,7 @@ on:
       - master
 
 jobs:
-  docker:
+  docker-build:
     runs-on: ubuntu-latest
 
     steps:
@@ -30,7 +30,7 @@ jobs:
           file: ./Dockerfile
           builder: ${{ steps.buildx.outputs.name }}
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/flask-helloworld
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/nest-ci-cd-ex
 
       - name: Verify
         run: echo ${{ steps.docker_build.outputs.digest }}
